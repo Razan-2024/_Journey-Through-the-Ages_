@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="ar">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Heritage Egypt - Tourism</title>
+  <style>
+    body {
+      background: #f8f9fa url('https://sonsofegypt.net/wp-content/uploads/2023/12/%D8%A7%D9%84%D8%A7%D8%AB%D8%A7%D8%B1-%D9%81%D9%8A-%D9%85%D8%B5%D8%B1-1.jpg') no-repeat center center fixed;
+      /* 🔹 الصورة */
+      background-size: cover;
+      font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+      position: relative;
+    }
+
+    body::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(255, 255, 255, 0.35);
+      z-index: 0;
+    }
+
+    nav {
+      background: linear-gradient(90deg, #003366, #004c99);
+      color: #fff;
+      padding: 15px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: relative;
+      z-index: 1;
+    }
+
+    nav h1 {
+      font-size: 20px;
+      display: flex;
+      align-items: center;
+    }
+
+    nav img {
+      width: 35px;
+      margin-right: 10px;
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      margin-left: 15px;
+      font-weight: bold;
+    }
+
+    nav a:hover {
+      text-decoration: underline;
+      color: gold;
+    }
+
+    .container {
+      width: 90%;
+      max-width: 1100px;
+      margin: 40px auto;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 20px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .card {
+      background: rgba(255, 255, 255, 0.95);
+      padding: 20px;
+      border-radius: 12px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+      transition: transform 0.2s ease, box-shadow 0.3s ease;
+      text-align: center;
+    }
+
+    .card:hover {
+      transform: scale(1.04);
+      box-shadow: 0 6px 15px rgba(0, 0, 0, 0.25);
+    }
+
+    .card img {
+      width: 100%;
+      border-radius: 8px;
+      margin-bottom: 15px;
+      height: 200px;
+      object-fit: cover;
+    }
+
+    .card h2 {
+      margin-bottom: 10px;
+      color: #004c99;
+      border-bottom: 2px solid gold;
+      display: inline-block;
+      padding-bottom: 4px;
+    }
+
+    .stars {
+      color: #f1c40f;
+      font-size: 18px;
+      margin-bottom: 10px;
+    }
+
+    .btn {
+      display: inline-block;
+      background: linear-gradient(90deg, #004c99, #007BFF);
+      color: #fff;
+      padding: 10px 20px;
+      border-radius: 8px;
+      text-decoration: none;
+      transition: 0.3s;
+      font-weight: bold;
+    }
+
+    .btn:hover {
+      background: linear-gradient(90deg, #007BFF, #004c99);
+      transform: scale(1.05);
+    }
+  </style>
+</head>
+
+<body>
+
+  <nav>
+    <h1>
+      <img src="WhatsApp Image 2025-11-08 at 1.43.01 PM(1).jpeg" alt="Logo">
+      رحلة عبر العصور
+    </h1>
+    <div class="links">
+      <a href="dashboard.html">الرئيسية</a>
+      <a href="tourism.html">الأماكن السياحية</a>
+      <a href="history.html">العصور التاريخية</a>
+      <a href="heritage.html">حفظ التراث</a>
+    </div>
+  </nav>
+
+  <div class="container">
+    <!-- 🏛️ الأهرامات -->
+    <div class="card">
+      <h2>أهرامات الجيزة</h2>
+      <div class="stars">⭐⭐⭐⭐⭐</div>
+      <p>أهرامات الجيزة من أعظم عجائب الدنيا السبع القديمة، وتقع على هضبة الجيزة غرب القاهرة.
+        بناها الفراعنة قبل أكثر من 4500 عام لتكون مقابر ملكية تحافظ على أجساد الملوك وأسرارهم.
+        أشهرها الهرم الأكبر خوفو، ويليه هرم خفرع، ثم هرم منقرع.
+        تتميز بدقة هندسية مذهلة جعلت العلماء يحتارون في كيفية بنائها.
+        ما زالت الأهرامات حتى اليوم رمزًا لعظمة الحضارة المصرية القديمة.</p>
+      <img
+        src="https://media.istockphoto.com/id/177047347/photo/the-pyramids-of-giza.jpg?s=612x612&w=0&k=20&c=sNOn3ruKWcJD1bqi4AVgU7yNt7nChIA30oLfUfsZ4Ro="
+        alt="صوره لاهرمات">
+      <a href="https://www.google.com/maps/place/Marriott+Menahouse+Golf+Course/" target="_blank" class="btn">عرض على
+        الخريطة</a>
+    </div>
+
+    <!-- 🏺 معبد الكرنك -->
+    <div class="card">
+      <h2>معبد الكرنك</h2>
+      <div class="stars">⭐⭐⭐⭐</div>
+      <p>معبد الكرنك من أعظم المعابد في مصر القديمة، ويقع في مدينة الأقصر.
+        كان مكرسًا لعبادة الإله آمون رع، وشارك ملوك كثر في بنائه على مدى 2000 عام.
+        يضم صروحًا ومسلات وتماثيل ضخمة أهمها قاعة الأعمدة الكبرى بـ134 عمودًا.
+        يعكس قوة الفن والعمارة الفرعونية ودورها الديني والسياسي.
+        يُعد الكرنك من أهم المواقع الأثرية في العالم ومقصدًا للسياحة الثقافية.</p>
+      <img
+        src="https://media.istockphoto.com/id/528618186/photo/ancient-ruins-of-karnak-temple-in-egypt.jpg?s=612x612&w=0&k=20&c=ss1BAdNK3-Xjdf-h_72w8MoVp3P8WPyt9Qp5_pBeG-I="
+        alt="صوره لمعبد الكرنك">
+      <a href="https://www.google.com/maps/place/Karnak/" target="_blank" class="btn">عرض على الخريطة</a>
+    </div>
+
+    <!-- 🏛️ المتحف المصري -->
+    <div class="card">
+      <h2>المتحف المصري</h2>
+      <div class="stars">⭐⭐⭐⭐</div>
+      <p>المتحف المصري في ميدان التحرير بالقاهرة، من أهم وأشهر المتاحف في العالم.
+        يضم أكثر من 150 ألف قطعة أثرية من الحضارة المصرية القديمة.
+        من أبرز مقتنياته كنوز الملك توت عنخ آمون والمومياوات الملكية.
+        افتتح عام 1902 ليكون مركزًا علميًا وسياحيًا فريدًا.
+        يمثل المتحف رمزًا للهوية الحضارية المصرية ومصدر فخر لكل زائر.</p>
+      <img
+        src="https://media.istockphoto.com/id/1249880662/photo/the-egyptian-museum-in-cairo.jpg?s=612x612&w=0&k=20&c=i95YCtJUHT1ZfDfGURvI_aY7Zlr8VOpRzAYDZa2PLfo="
+        alt="المتحف المصري">
+      <a href="https://www.google.com/maps/place/The+Egyptian+Museum+in+Cairo/" target="_blank" class="btn">عرض على
+        الخريطة</a>
+    </div>
+
+    <!-- 🏜️ معبد فيلة -->
+    <div class="card">
+      <h2>معبد فيلة</h2>
+      <div class="stars">⭐⭐⭐⭐⭐</div>
+      <p>معبد فيلة من أجمل معابد مصر القديمة، مخصص للإلهة إيزيس ربة السحر والحب.
+        نُقل بالكامل بعد بناء السد العالي للحفاظ عليه من الغرق.
+        يضم نقوشًا تروي قصة إيزيس وأوزوريس، ويُضاء بعرض صوت وضوء ساحر.
+        يمثل المعبد تحفة فنية ومعمارية فريدة من نوعها.
+        يُعد من أبرز المعالم السياحية في أسوان وأكثرها جذبًا للزوار.</p>
+      <img src="https://watanimg.elwatannews.com/image_archive/original_lower_quality/16740783821728206580.jpg"
+        alt="معبد فيلة">
+      <a href="https://www.google.com/maps/place/Philae+Temple/" target="_blank" class="btn">عرض على الخريطة</a>
+    </div>
+
+    <!-- 💧 السد العالي -->
+    <div class="card">
+      <h2>السد العالي</h2>
+      <div class="stars">⭐⭐⭐⭐</div>
+      <p>السد العالي بأسوان من أعظم المشاريع الهندسية في القرن العشرين.
+        بُني لحماية مصر من الفيضانات وتخزين المياه في بحيرة ناصر.
+        يبلغ طوله 3600 متر وارتفاعه 111 مترًا.
+        وفر طاقة كهربائية هائلة وساهم في التنمية الزراعية.
+        يرمز السد إلى إرادة المصريين في بناء مستقبل قوي ومستقل.</p>
+      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTT88trMU9XOeaODvF2ZiDFCFMfwaQ6_HrjTQ&s"
+        alt="السد العالي">
+      <a href="https://www.google.com/maps/place/The+High+Dam/@23.970883,32.8772699,3a,75y,90t/data=!3m8!1e5!3m6!1sCIHM0ogKEICAgID9sYKTlwE!2e10!3e10!6shttps:%2F%2Flh3.googleusercontent.com%2Fgps-cs-s%2FAC9h4nre7ETXajt3zeuf8IRPJOnudGFSnLu6mpoOhvO4q3eAbSfaPznal35vqZZiaZGkJNB1hThXO8If5SuAxUXn3ARf-HEtoqoWeX0w94T5N27eLLKfM7vGyq_-gkMVX5htCrsPku56Ww%3Dw203-h270-k-no!7i1080!8i1440!4m16!1m8!3m7!1s0x1436886a6b928b8b:0x1f30b4b0578be44c!2sThe+High+Dam!8m2!3d23.970883!4d32.8772699!10e5!16zL20vMDFiNHl5!3m6!1s0x1436886a6b928b8b:0x1f30b4b0578be44c!8m2!3d23.970883!4d32.8772699!10e5!16zL20vMDFiNHl5?entry=ttu&g_ep=EgoyMDI1MTAwMS4wIKXMDSoASAFQAw%3D%3D"
+        target="_blank" class="btn">عرض على الخريطة</a>
+    </div>
+
+    <!-- 🏺 متحف النوبة -->
+    <div class="card">
+      <h2>متحف النوبة</h2>
+      <div class="stars">⭐⭐⭐⭐⭐</div>
+      <p>متحف النوبة يعرض تاريخ وثقافة النوبة العريقة عبر آلاف السنين.
+        افتتح عام 1997 ويضم أكثر من 5000 قطعة أثرية نادرة.
+        يُبرز العلاقة بين المصريين والنيل بنقوش وتماثيل مدهشة.
+        صُمم المتحف بمزيج رائع بين الأصالة والحداثة.
+        يُعد وجهة مثالية لعشاق التاريخ والفنون المصرية القديمة.</p>
+      <img src="https://nasseryouthmovement.net/uploads/images/2022/11/image_750x_637f5339c5c1f.jpg" alt="متحف النوبة">
+      <a href="https://www.google.com/maps/place/Nubian+Museum/@24.0794298,32.8866,17z/data=!3m1!4b1!4m6!3m5!1s0x143663597d21e809:0xca27e595fe005147!8m2!3d24.0794249!4d32.8891749!16s%2Fm%2F02vrh1g?entry=ttu&g_ep=EgoyMDI1MTAwMS4wIKXMDSoASAFQAw%3D%3D"
+        target="_blank" class="btn">عرض على الخريطة</a>
+    </div>
+  </div>
+
+</body>
+
+</html>

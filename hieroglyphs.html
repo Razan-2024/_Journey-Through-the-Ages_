@@ -1,0 +1,541 @@
+<!DOCTYPE html>
+<html lang="ar">
+
+<head>
+  <meta charset="utf-8" />
+  <title>كيبورد الهيروغليفية — لوحة مفاتيح</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <style>
+    /* === Videos Row (New Layout) === */
+    .videos-row {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      flex-wrap: wrap;
+      margin: 40px 0;
+    }
+
+    .videos-row video {
+      width: 300px;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    }
+
+    :root {
+      --bg: #f8f9fa;
+      --nav1: #003366;
+      --nav2: #004c99;
+      --accent: #d4af37;
+      --key-bg: #ffffff;
+      --key-shadow: rgba(0, 0, 0, 0.12);
+      --key-active: #eef8ff;
+      --text: #003049;
+      --medium-size: 150px;
+      /* ← تكبير المفاتيح هنا */
+    }
+
+
+    body {
+      margin: 0;
+      font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+      background:
+        linear-gradient(rgba(255, 255, 255, 0.7), rgba(255, 255, 255, 0.7)),
+        url('https://sonsofegypt.net/wp-content/uploads/2023/12/%D8%A7%D9%84%D8%A7%D8%AB%D8%A7%D8%B1-%D9%81%D9%8A-%D9%85%D8%B5%D8%B1-1.jpg') no-repeat center center fixed;
+
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      direction: rtl;
+    }
+
+
+    nav {
+      background: linear-gradient(90deg, #1e2a38, #243447);
+      color: #f1c40f;
+      padding: 15px 30px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    }
+
+    nav h1 {
+      font-size: 22px;
+      display: flex;
+      align-items: center;
+      font-weight: bold;
+      color: #f1c40f;
+      letter-spacing: 1px;
+    }
+
+    nav img {
+      width: 40px;
+      margin-left: 10px;
+    }
+
+    nav .links a {
+      color: #f1c40f;
+      text-decoration: none;
+      margin: 0 15px;
+      transition: 0.3s;
+      font-size: 17px;
+    }
+
+    nav .links a:hover {
+      color: #ffffff;
+      text-shadow: 0 0 10px #f1c40f;
+    }
+
+    .container {
+      max-width: 1100px;
+      margin: 18px auto;
+      padding: 0 18px 40px;
+    }
+
+    .title {
+      text-align: center;
+      color: var(--nav2);
+      margin: 18px 0;
+      font-size: 20px;
+      border-bottom: 3px solid var(--accent);
+      display: inline-block;
+      padding: 6px 12px;
+      border-radius: 8px;
+      background: #fff;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.04);
+    }
+
+    /* output box */
+    .panel {
+      margin: 18px auto 10px;
+      display: flex;
+      gap: 10px;
+      align-items: center;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .output {
+      width: 72%;
+      min-height: 54px;
+      background: #fff;
+      border-radius: 10px;
+      padding: 10px 14px;
+      box-shadow: 0 6px 18px rgba(0, 0, 0, 0.06);
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-size: 20px;
+      direction: ltr;
+      /* keep internal text LTR for icons if needed */
+    }
+
+    .output .text {
+      flex: 1;
+      text-align: center;
+      direction: rtl;
+      font-size: 22px;
+      word-break: break-word;
+    }
+
+    .controls {
+      display: flex;
+      gap: 8px;
+      align-items: center;
+    }
+
+    .btn {
+      background: linear-gradient(90deg, var(--nav2), var(--nav1));
+      color: #fff;
+      border: none;
+      padding: 10px 12px;
+      border-radius: 8px;
+      cursor: pointer;
+      font-weight: 600;
+      box-shadow: 0 6px 14px rgba(0, 0, 0, 0.12);
+    }
+
+    .btn.secondary {
+      background: #fff;
+      color: var(--nav2);
+      border: 1px solid rgba(0, 76, 153, 0.12);
+      box-shadow: none;
+      font-weight: 700;
+    }
+
+    /* keyboard area - grid of rows like keyboard */
+    .keyboard {
+      margin: 20px auto 0;
+      width: 100%;
+      background: transparent;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .kbd-row {
+      display: flex;
+      gap: 10px;
+      width: 100%;
+      justify-content: center;
+      flex-wrap: nowrap;
+    }
+
+    .key {
+      width: var(--medium-size);
+      height: var(--medium-size);
+      min-width: var(--medium-size);
+      background: var(--key-bg);
+      border-radius: 10px;
+      box-shadow: 0 6px 12px var(--key-shadow);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      cursor: pointer;
+      transition: transform .12s ease, box-shadow .12s ease, background .12s ease;
+      user-select: none;
+      padding: 6px;
+    }
+
+    .key:active,
+    .key.active {
+      transform: translateY(2px) scale(.98);
+      background: var(--key-active);
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    .key img.glyph {
+      width: 36px;
+      height: 36px;
+      object-fit: contain;
+      display: block;
+      margin-bottom: 4px;
+    }
+
+    .key .label {
+      font-size: 13px;
+      color: var(--nav2);
+      font-weight: 700;
+      line-height: 1;
+    }
+
+    /* larger special keys */
+    .key.wide {
+      min-width: 110px;
+      width: 110px;
+      padding: 8px;
+    }
+
+    .footer-note {
+      text-align: center;
+      margin-top: 16px;
+      color: #666;
+      font-size: 13px;
+    }
+
+    /* responsive tweaks */
+    @media (max-width:900px) {
+      .output {
+        width: 100%;
+      }
+
+      .key {
+        width: 52px;
+        height: 52px;
+        min-width: 52px;
+      }
+
+      .key img.glyph {
+        width: 28px;
+        height: 28px;
+      }
+    }
+
+    @media (max-width:520px) {
+      .kbd-row {
+        gap: 6px;
+      }
+
+      .key {
+        width: 46px;
+        height: 46px;
+        min-width: 46px;
+      }
+
+      .key.wide {
+        min-width: 86px;
+        width: 86px;
+      }
+
+      .title {
+        font-size: 18px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <nav>
+    <h1>🌍رحلة عبر العصور</h1>
+    <div class="links">
+      <a href="dashboard.html">الرئيسية</a>
+      <a href="tourism.html">الأماكن السياحية</a>
+      <a href="history.html">العصور التاريخية</a>
+      <a href="heritage.html">حفظ التراث</a>
+    </div>
+  </nav>
+
+
+  <div class="container">
+    <div class="title">كيبورد الحروف الهيروغليفية — لوحة مفاتيح</div>
+
+    <div class="panel">
+      <div class="output" id="output">
+        <div class="text" id="typed">اضغطي على الرموز لكتابة الكلمة...</div>
+      </div>
+
+      <div class="controls">
+        <button class="btn secondary" id="backspace" title="حذف آخر رمز">حذف</button>
+        <button class="btn secondary" id="clear" title="مسح">مسح</button>
+        <button class="btn" id="copy" title="نسخ النص">نسخ</button>
+      </div>
+    </div>
+
+    <!-- لوحة تشبه الكيبورد: صفوف -->
+    <div class="keyboard" id="keyboard">
+
+      <!-- الصف الأول -->
+      <div class="kbd-row">
+        <div class="key" data-symbol="𓄿" data-sound="sounds/a.mp3">
+          <img class="glyph" src="1.jpeg" alt="𓄿">
+          <div class="label">ألف</div>
+        </div>
+
+        <div class="key" data-symbol="𓃀" data-sound="sounds/b.mp3">
+          <img class="glyph" src="2.jpeg" alt="𓃀">
+          <div class="label">باء</div>
+        </div>
+
+        <div class="key" data-symbol="𓍿" data-sound="sounds/t.mp3">
+          <img class="glyph" src="3.jpeg" alt="𓍿">
+          <div class="label">ت</div>
+        </div>
+
+        <div class="key" data-symbol="𓎡" data-sound="sounds/k.mp3">
+          <img class="glyph" src="5.jpeg" alt="𓎡">
+          <div class="label">كاف</div>
+        </div>
+
+        <div class="key" data-symbol="𓂋" data-sound="sounds/r.mp3">
+          <img class="glyph" src="4.jpeg" alt="𓂋">
+          <div class="label">راء</div>
+        </div>
+
+        <div class="key" data-symbol="𓋴" data-sound="sounds/s.mp3">
+          <img class="glyph" src="7.jpeg" alt="𓋴">
+          <div class="label">سين</div>
+        </div>
+
+        <div class="key" data-symbol="𓅓" data-sound="sounds/m.mp3">
+          <img class="glyph" src="6.jpeg" alt="𓅓">
+          <div class="label">ميم</div>
+        </div>
+      </div>
+
+      <!-- الصف الثاني -->
+      <div class="kbd-row">
+        <div class="key" data-symbol="𓈖" data-sound="sounds/n.mp3">
+          <img class="glyph" src="9.jpeg" alt="𓈖">
+          <div class="label">نون</div>
+        </div>
+
+        <div class="key" data-symbol="𓅱" data-sound="sounds/w.mp3">
+          <img class="glyph" src="8.jpeg" alt="𓅱">
+          <div class="label">واو</div>
+        </div>
+
+        <div class="key" data-symbol="𓇋" data-sound="sounds/y.mp3">
+          <img class="glyph" src="11.jpeg" alt="𓇋">
+          <div class="label">ياء</div>
+        </div>
+
+        <div class="key" data-symbol="𓆑" data-sound="sounds/f.mp3">
+          <img class="glyph" src="10.jpeg" alt="𓆑">
+          <div class="label">فاء</div>
+        </div>
+
+        <div class="key" data-symbol="𓎛" data-sound="sounds/h (2).mp3">
+          <img class="glyph" src="13.jpeg" alt="𓎛">
+          <div class="label">ح/خ</div>
+        </div>
+
+        <div class="key" data-symbol="𓉔" data-sound="sounds/h (2).mp3">
+          <img class="glyph" src="12.jpeg" alt="𓉔">
+          <div class="label">هاء</div>
+        </div>
+
+        <div class="key" data-symbol="𓊃" data-sound="sounds/sh.mp3">
+          <img class="glyph" src="17.jpeg" alt="𓊃">
+          <div class="label">شين</div>
+        </div>
+      </div>
+
+      <!-- الصف الثالث -->
+      <div class="kbd-row">
+        <div class="key" data-symbol="𓎼" data-sound="sounds/g.mp3">
+          <img class="glyph" src="14.jpeg" alt="𓎼">
+          <div class="label">جيم</div>
+        </div>
+
+        <div class="key wide" data-symbol="𓏏" data-sound="sounds/tttt.mp3">
+          <img class="glyph" src="15.jpeg" alt="𓏏">
+          <div class="label">تاء نهاية</div>
+        </div>
+
+
+
+        <!-- صف الأوامر أسفل -->
+        <div class="kbd-row" style="margin-top:6px;">
+          <div class="key wide" id="space" data-symbol=" " data-sound="">
+            <img class="glyph" src="19.jpeg" alt="فراغ">
+            <div class="label">مسافة</div>
+          </div>
+
+          <div class="key wide" id="copyKey" data-sound="">
+            <img class="glyph" src="18.jpeg" alt="نسخ">
+            <div class="label">نسخ</div>
+          </div>
+
+          <div class="key wide" id="play-back" data-sound="">
+            <img class="glyph" src="16.jpeg" alt="تشغيل">
+            <div class="label">تشغيل الصوت</div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- ✅ الفيديوهات بشكل أفقي -->
+      <div class="videos-row">
+        <video controls>
+          <source src="WhatsApp Video 2025-10-07 at 12.20.41 AM(1).mp4" type="video/mp4">
+        </video>
+
+        <video controls>
+          <source src="WhatsApp Video 2025-10-07 at 12.20.41 AM.mp4" type="video/mp4">
+        </video>
+
+        <video controls>
+          <source src="WhatsApp Video 2025-10-07 at 12.20.42 AM.mp4" type="video/mp4">
+        </video>
+      </div>
+
+
+    </div>
+
+    <script>
+      // DOM
+      const typedEl = document.getElementById('typed');
+      const keys = Array.from(document.querySelectorAll('.key'));
+      const clearBtn = document.getElementById('clear');
+      const backspaceBtn = document.getElementById('backspace');
+      const copyBtn = document.getElementById('copy');
+      const spaceKey = document.getElementById('space');
+      const playBack = document.getElementById('play-back');
+      const copyKey = document.getElementById('copyKey');
+
+      // state
+      let current = ''; // النص المكتوب (يتضمن الرموز)
+      let lastAudio = null;
+
+      // helper: play audio if exists
+      function playSound(src) {
+        if (!src) return;
+        try {
+          if (lastAudio) {
+            lastAudio.pause();
+            lastAudio.currentTime = 0;
+          }
+          const a = new Audio(src);
+          lastAudio = a;
+          a.play().catch(e => { /* silent */ });
+        } catch (e) { }
+      }
+
+      // append symbol to output
+      function appendSymbol(sym) {
+        if (!sym) {
+          current += ' ';
+        } else {
+          current += sym;
+        }
+        typedEl.textContent = current || 'اضغطي على الرموز لكتابة الكلمة...';
+      }
+
+      // key click handler
+      keys.forEach(k => {
+        k.addEventListener('click', () => {
+          // special keys handled by id
+          if (k.id === 'space') { appendSymbol(' '); k.classList.add('active'); setTimeout(() => k.classList.remove('active'), 120); return; }
+          if (k.id === 'copyKey') { copyText(); k.classList.add('active'); setTimeout(() => k.classList.remove('active'), 120); return; }
+          if (k.id === 'play-back') { if (lastAudio) lastAudio.play().catch(() => { }); k.classList.add('active'); setTimeout(() => k.classList.remove('active'), 120); return; }
+
+          const sym = k.getAttribute('data-symbol') || '';
+          const sound = k.getAttribute('data-sound') || '';
+
+          // visual feedback
+          k.classList.add('active');
+          setTimeout(() => k.classList.remove('active'), 120);
+
+          // append to text
+          appendSymbol(sym);
+
+          // play simplified sound (user chose option 2). 
+          // NOTE: put your mp3 files in /sounds/ with these names or change path.
+          if (sound) playSound(sound);
+        });
+      });
+
+      // clear/backspace/copy
+      clearBtn.addEventListener('click', () => {
+        current = '';
+        typedEl.textContent = 'اضغطي على الرموز لكتابة الكلمة...';
+      });
+
+      backspaceBtn.addEventListener('click', () => {
+        if (!current) return;
+        // remove last Unicode grapheme (simple approach: remove last character)
+        current = current.slice(0, -1);
+        typedEl.textContent = current || 'اضغطي على الرموز لكتابة الكلمة...';
+      });
+
+      function copyText() {
+        if (!current) return;
+        navigator.clipboard?.writeText(current).then(() => {
+          // feedback small
+          copyBtn.textContent = 'تم النسخ';
+          setTimeout(() => copyBtn.textContent = 'نسخ', 1100);
+        }).catch(() => {
+          alert('نسخ فشل — تأكدي من أذونات المتصفح');
+        });
+      }
+
+      copyBtn.addEventListener('click', copyText);
+
+      // optional UI copy/space keys
+      copyKey.addEventListener('click', copyText);
+      spaceKey.addEventListener('click', () => appendSymbol(' '));
+      playBack.addEventListener('click', () => { if (lastAudio) lastAudio.play().catch(() => { }); });
+
+      // keyboard accessibility: allow pressing physical keys to trigger first few symbols (optional)
+      // (This is minimal — for full mapping you can add transliteration)
+      document.addEventListener('keydown', (e) => {
+        // example: space to add space
+        if (e.code === 'Space') { e.preventDefault(); appendSymbol(' '); spaceKey.classList.add('active'); setTimeout(() => spaceKey.classList.remove('active'), 120); }
+      });
+
+    </script>
+</body>
+
+</html>

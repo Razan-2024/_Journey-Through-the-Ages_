@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Heritage Egypt - Sign In</title>
+  <style>
+    body {
+      background: #f8f9fa url('https://sonsofegypt.net/wp-content/uploads/2023/12/%D8%A7%D9%84%D8%A7%D8%AB%D8%A7%D8%B1-%D9%81%D9%8A-%D9%85%D8%B5%D8%B1-1.jpg') no-repeat center center fixed; /* 🔹 الصورة */
+      background-size: cover;
+      font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+      position: relative;
+    }
+
+    
+    body::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(255, 255, 255, 0.35); 
+
+      z-index: 0;
+    }
+
+    .login-box {
+      position: relative;
+      z-index: 1; 
+      width: 350px;
+      margin: 80px auto;
+      background: #fff;
+      padding: 30px;
+      border-radius: 12px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+      text-align: center;
+    }
+
+    .guide-icon {
+      font-size: 40px;
+      color: #27ae60;
+      margin-bottom: 10px;
+    }
+
+    .login-box img {
+      width: 300px;
+      margin-bottom: 20px;
+    }
+
+    .login-box h2 {
+      margin-bottom: 20px;
+      color: #2c3e50;
+    }
+
+    .login-box input {
+      width: 100%;
+      padding: 12px;
+      margin: 8px 0;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+    }
+
+    .login-box button {
+      width: 100%;
+      padding: 12px;
+      border: none;
+      border-radius: 8px;
+      background: #27ae60;
+      color: #fff;
+      font-size: 16px;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    .login-box button:hover {
+      background: #1e8449;
+    }
+
+    .footer-text {
+      margin-top: 15px;
+      font-size: 14px;
+      color: #777;
+    }
+
+    .footer-text a {
+      color: #2980b9;
+      text-decoration: none;
+    }
+
+    .footer-text a:hover {
+      text-decoration: underline;
+    }
+
+    
+    .lang-select {
+      position: absolute;
+      top: 15px;
+      right: 15px;
+      background: #f0f0f0;
+      border-radius: 8px;
+      padding: 5px 10px;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+      z-index: 2;
+    }
+
+    .lang-select select {
+      border: none;
+      background: transparent;
+      font-weight: bold;
+      color: #27ae60;
+      cursor: pointer;
+      outline: none;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="lang-select">
+    <select id="language" onchange="changeLang(this.value)">
+      <option value="en">English</option>
+      <option value="ar">العربية</option>
+    </select>
+  </div>
+
+  <div class="login-box">
+    <div class="guide-icon">🧭</div>
+    <img src="WhatsApp Image 2025-11-08 at 1.43.01 PM(1).jpeg" alt="Heritage Egypt Logo">
+
+    <h2 id="title">Journey Through the Ages</h2>
+
+    <form action="dashboard.html">
+      <input id="username" type="text" placeholder="Username" required>
+      <input id="password" type="password" placeholder="Password" required>
+      <button id="signin-btn" type="submit">Sign In</button>
+    </form>
+
+    <div class="footer-text" id="footer-text">
+      <p>Don’t have an account? <a href="#">Sign Up</a></p>
+    </div>
+  </div>
+
+  <script>
+    function changeLang(lang) {
+      if (lang === "ar") {
+        document.documentElement.lang = "ar";
+        document.getElementById("title").textContent = "رحلة عبر العصور";
+        document.getElementById("username").placeholder = "اسم المستخدم";
+        document.getElementById("password").placeholder = "كلمة المرور";
+        document.getElementById("signin-btn").textContent = "تسجيل الدخول";
+        document.getElementById("footer-text").innerHTML = 'ليس لديك حساب؟ <a href="#">إنشاء حساب</a>';
+        document.body.style.direction = "rtl";
+      } else {
+        document.documentElement.lang = "en";
+        document.getElementById("title").textContent = "Journey Through the Ages";
+        document.getElementById("username").placeholder = "Username";
+        document.getElementById("password").placeholder = "Password";
+        document.getElementById("signin-btn").textContent = "Sign In";
+        document.getElementById("footer-text").innerHTML = 'Don’t have an account? <a href="#">Sign Up</a>';
+        document.body.style.direction = "ltr";
+      }
+    }
+  </script>
+
+</body>
+
+</html>

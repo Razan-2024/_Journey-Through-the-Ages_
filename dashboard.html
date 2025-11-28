@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+  <meta charset="UTF-8">
+  <title>Heritage Egypt - Dashboard</title>
+  <style>
+    body {
+      background: #f8f9fa url('https://sonsofegypt.net/wp-content/uploads/2023/12/%D8%A7%D9%84%D8%A7%D8%AB%D8%A7%D8%B1-%D9%81%D9%8A-%D9%85%D8%B5%D8%B1-1.jpg') no-repeat center center fixed;
+      background-size: cover;
+      font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+      position: relative;
+    }
+
+    body::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(255, 255, 255, 0.35);
+      z-index: 0;
+    }
+
+    nav {
+      background: linear-gradient(90deg, #003366, #004c99);
+      color: #fff;
+      padding: 15px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: relative;
+      z-index: 1;
+    }
+
+    nav h1 {
+      font-size: 20px;
+      display: flex;
+      align-items: center;
+    }
+
+    nav img {
+      width: 35px;
+      margin-right: 10px;
+    }
+
+    .guide-icon {
+      font-size: 24px;
+      margin-right: 8px;
+    }
+
+    a.logout {
+      color: gold;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    a.logout:hover {
+      text-decoration: underline;
+    }
+
+    .container {
+      width: 90%;
+      max-width: 1100px;
+      margin: 40px auto;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 20px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .card {
+      background: rgba(255, 255, 255, 0.95);
+      padding: 20px;
+      border-radius: 12px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+      text-align: center;
+      transition: transform 0.2s;
+    }
+
+    .card:hover {
+      transform: scale(1.05);
+    }
+
+    .card img {
+      width: 100%;
+      height: 180px;
+      object-fit: cover;
+      border-radius: 8px;
+      margin-bottom: 15px;
+    }
+
+    .card h2 {
+      margin-bottom: 10px;
+      color: #004c99;
+      border-bottom: 2px solid gold;
+      display: inline-block;
+      padding-bottom: 4px;
+    }
+
+    .btn {
+      display: inline-block;
+      background: linear-gradient(90deg, #004c99, #007BFF);
+      color: #fff;
+      padding: 10px 20px;
+      margin-top: 10px;
+      border-radius: 8px;
+      text-decoration: none;
+      transition: 0.3s;
+      font-weight: bold;
+    }
+
+    .btn:hover {
+      background: linear-gradient(90deg, #007BFF, #004c99);
+      transform: scale(1.05);
+    }
+
+  
+    #chat-toggle {
+      position: fixed;
+      bottom: 20px;
+      left: 20px;
+      background: #004c99;
+      color: #fff;
+      border: none;
+      border-radius: 50%;
+      width: 60px;
+      height: 60px;
+      font-size: 24px;
+      cursor: pointer;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+      z-index: 1000;
+      transition: 0.3s;
+    }
+
+    #chat-toggle:hover {
+      transform: scale(1.1);
+      background: #007BFF;
+    }
+
+    
+    #chatbox {
+      display: none;
+      position: fixed;
+      bottom: 90px;
+      left: 20px;
+      width: 350px;
+      height: 480px;
+      background: #fff;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+      overflow: hidden;
+      font-size: 14px;
+      z-index: 1000;
+      display: flex;
+      flex-direction: column;
+    }
+
+    #chat-messages {
+      flex: 1;
+      padding: 10px;
+      overflow-y: auto;
+      background: #f4f6f8;
+    }
+
+    .message {
+      margin: 5px 0;
+      padding: 8px 12px;
+      border-radius: 10px;
+      max-width: 80%;
+    }
+
+    .user {
+      background: #007BFF;
+      color: white;
+      align-self: flex-end;
+      margin-left: auto;
+    }
+
+    .bot {
+      background: #eee;
+      color: black;
+      align-self: flex-start;
+      margin-right: auto;
+    }
+
+    .typing {
+      background: #e0e0e0;
+      color: #555;
+      font-style: italic;
+      padding: 6px 12px;
+      border-radius: 10px;
+      align-self: flex-start;
+      animation: blink 1s infinite;
+    }
+
+    @keyframes blink {
+      0%, 100% { opacity: 0.6; }
+      50% { opacity: 1; }
+    }
+
+    #chat-input {
+      display: flex;
+      border-top: 1px solid #ccc;
+    }
+
+    #user-input {
+      flex: 1;
+      padding: 10px;
+      border: none;
+      outline: none;
+    }
+
+    #send-btn {
+      background: #004c99;
+      color: #fff;
+      border: none;
+      padding: 10px 15px;
+      cursor: pointer;
+    }
+
+    #send-btn:hover {
+      background: #007BFF;
+    }
+
+    .quick-questions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      padding: 8px;
+      border-top: 1px solid #ddd;
+      background: #fafafa;
+      justify-content: center;
+    }
+
+    .quick-btn {
+      background: #f1f1f1;
+      border: none;
+      border-radius: 8px;
+      padding: 6px 10px;
+      cursor: pointer;
+      transition: 0.3s;
+      font-size: 13px;
+    }
+
+    .quick-btn:hover {
+      background: #ddd;
+    }
+  </style>
+</head>
+
+<body>
+
+  
+  <nav>
+    <h1>
+      <span class="guide-icon">🧭</span>
+      <img src="WhatsApp Image 2025-11-08 at 1.43.01 PM(1).jpeg" alt="Logo">
+      رحلة عبر العصور
+    </h1>
+    <div>
+      <a href="signin.html" class="logout">تسجيل خروج</a>
+    </div>
+  </nav>
+
+  
+  <div class="container">
+    <div class="card">
+      <img src="https://goexholidays.com/uploads/0000/1/2023/11/23/egypt.jpg" alt="Tourism">
+      <h2>الأماكن السياحية</h2>
+      <p>اكتشف أهم المعالم السياحية في مصر مع الأسعار والتقييمات والخريطة</p>
+      <a href="tourism.html" class="btn">استكشف</a>
+    </div>
+
+    <div class="card">
+      <img src="https://cdn.alweb.com/thumbs/hadaarah/article/fit710x532/%D9%83%D9%84-%D9%85%D8%A7-%D8%AA%D8%B1%D8%BA%D8%A8-%D9%85%D8%B9%D8%B1%D9%81%D8%AA%D9%87-%D8%B9%D9%86-%D8%A7%D9%84%D8%B9%D8%B5%D8%B1-%D8%A7%D9%84%D8%AD%D8%AC%D8%B1%D9%8A.jpg" alt="History">
+      <h2>التاريخ والعصور</h2>
+      <p>تعرف على أهم العصور التاريخية والملوك وأعمالهم العظيمة</p>
+      <a href="history.html" class="btn">عرض</a>
+    </div>
+
+    <div class="card">
+      <img src="https://www.edarabia.com/ar/wp-content/uploads/2020/11/protect-heritage-4-ways-protect-heritage-cultural-traditions-country.jpg" alt="Heritage">
+      <h2>حفظ التراث</h2>
+      <p>أماكن مميزة من التراث المصري وموقعها ولمحة عن تاريخها</p>
+      <a href="heritage.html" class="btn">اكتشف</a>
+    </div>
+
+    <div class="card">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/b/bd/Egyptian_hieroglyphics.jpg" alt="Hieroglyphs">
+      <h2>الحروف الهيروغليفية</h2>
+      <p>تعرف على الحروف الهيروغليفية ومعانيها وطريقة كتابتها</p>
+      <a href="hieroglyphs.html" class="btn">استكشف</a>
+    </div>
+
+    <div class="card">
+      <img src="https://www.presidency.eg/media/127654/grand-egyptian-museum-under-construction-with-the-pyramids-in-the-back-groundjpeg.jpeg" alt="Egyptian Museum">
+      <h2>المتحف المصري</h2>
+      <p>تعرف على كنوز الفراعنة المعروضة في المتحف المصري في ميدان التحرير.</p>
+      <a href="museum.html" class="btn">اعرف أكثر</a>
+    </div>
+
+  </div>
+
+ 
+  <button id="chat-toggle">💬</button>
+
+  <div id="chatbox">
+    <div id="chat-messages"></div>
+
+    <div class="quick-questions">
+      <button class="quick-btn">فين الأهرامات</button>
+      <button class="quick-btn">مين رمسيس الثاني</button>
+      <button class="quick-btn">ايه أشهر معبد في الأقصر</button>
+      <button class="quick-btn">مين توت عنخ آمون</button>
+      <button class="quick-btn">ازاي اروح المتحف المصري</button>
+      <button class="quick-btn">مرحبا</button>
+    </div>
+
+    <div id="chat-input">
+      <input type="text" id="user-input" placeholder="اكتب سؤالك هنا...">
+      <button id="send-btn">إرسال</button>
+    </div>
+  </div>
+
+  
+  <script type="text/javascript">
+    window.$crisp=[];
+    window.CRISP_WEBSITE_ID="25358a4e-6d11-4077-b809-66e1587f5b8b";
+    (function(){
+      d=document;
+      s=d.createElement("script");
+      s.src="https://client.crisp.chat/l.js";
+      s.async=1;
+      d.getElementsByTagName("head")[0].appendChild(s);
+    })();
+  </script>
+
+  
+  <script>
+    const chatbotData = {
+      "فين الأهرامات": "الأهرامات موجودة في محافظة الجيزة، وهي من عجائب الدنيا السبع.",
+      "مين رمسيس الثاني": "رمسيس الثاني من أعظم ملوك مصر القديمة، حكم أكثر من 60 عامًا وبنى معابد ضخمة.",
+      "ايه أشهر معبد في الأقصر": "معبد الكرنك هو الأشهر في الأقصر، وكان مركز عبادة الإله آمون.",
+      "مين توت عنخ آمون": "توت عنخ آمون من أشهر الفراعنة بسبب مقبرته الكاملة التي اكتُشفت في وادي الملوك.",
+      "ازاي اروح المتحف المصري": "المتحف المصري في ميدان التحرير بالقاهرة، يمكنك الوصول إليه بسهولة عبر المترو أو التاكسي.",
+      "مرحبا": "أهلاً بيك في موقع Heritage Egypt 🌞! ازاي أقدر أساعدك؟"
+    };
+
+    const toggleBtn = document.getElementById("chat-toggle");
+    const chatbox = document.getElementById("chatbox");
+    const sendBtn = document.getElementById("send-btn");
+    const userInput = document.getElementById("user-input");
+    const chatMessages = document.getElementById("chat-messages");
+    const quickBtns = document.querySelectorAll(".quick-btn");
+
+    toggleBtn.addEventListener("click", () => {
+      chatbox.style.display = (chatbox.style.display === "none" || chatbox.style.display === "") ? "flex" : "none";
+    });
+
+    sendBtn.addEventListener("click", sendMessage);
+    userInput.addEventListener("keypress", e => {
+      if (e.key === "Enter") sendMessage();
+    });
+
+    quickBtns.forEach(btn => {
+      btn.addEventListener("click", () => {
+        userInput.value = btn.textContent;
+        sendMessage();
+      });
+    });
+
+    function sendMessage() {
+      const userText = userInput.value.trim();
+      if (userText === "") return;
+
+      addMessage(userText, "user");
+      userInput.value = "";
+
+      const reply = chatbotData[userText] || "عذرًا، مش لاقي إجابة على السؤال ده حاليًا 🤔";
+
+      const typing = document.createElement("div");
+      typing.classList.add("typing");
+      typing.textContent = "يكتب...";
+      chatMessages.appendChild(typing);
+      chatMessages.scrollTop = chatMessages.scrollHeight;
+
+      setTimeout(() => {
+        typing.remove();
+        addMessage(reply, "bot");
+      }, 1500);
+    }
+
+    function addMessage(text, sender) {
+      const msg = document.createElement("div");
+      msg.classList.add("message", sender);
+      msg.textContent = text;
+      chatMessages.appendChild(msg);
+      chatMessages.scrollTop = chatMessages.scrollHeight;
+    }
+  </script>
+
+</body>
+</html>

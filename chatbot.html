@@ -1,0 +1,127 @@
+<!--<!DOCTYPE html>
+<html lang="ar">
+<head>
+  <meta charset="UTF-8">
+  <title>شات بوت مجاني</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+
+    /* زرار الشات */
+    #chatButton {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      border-radius: 50%;
+      width: 60px;
+      height: 60px;
+      font-size: 24px;
+      cursor: pointer;
+      box-shadow: 0px 4px 6px rgba(0,0,0,0.2);
+    }
+
+    /* صندوق الشات */
+    #chatBox {
+      display: none;
+      position: fixed;
+      bottom: 90px;
+      right: 20px;
+      width: 300px;
+      height: 400px;
+      border: 1px solid #ccc;
+      border-radius: 10px;
+      background: white;
+      box-shadow: 0px 4px 8px rgba(0,0,0,0.2);
+      display: flex;
+      flex-direction: column;
+    }
+
+    #chatMessages {
+      flex: 1;
+      padding: 10px;
+      overflow-y: auto;
+      border-bottom: 1px solid #ccc;
+    }
+
+    #chatInput {
+      display: flex;
+    }
+
+    #chatInput input {
+      flex: 1;
+      padding: 10px;
+      border: none;
+      border-radius: 0 0 0 10px;
+      outline: none;
+    }
+
+    #chatInput button {
+      padding: 10px;
+      border: none;
+      background: #4CAF50;
+      color: white;
+      cursor: pointer;
+      border-radius: 0 0 10px 0;
+    }
+  </style>
+</head>
+<body>
+
+  <button id="chatButton">💬</button>
+
+  <div id="chatBox">
+    <div id="chatMessages"></div>
+    <div id="chatInput">
+      <input type="text" id="userMessage" placeholder="اكتب رسالتك...">
+      <button onclick="sendMessage()">إرسال</button>
+    </div>
+  </div>
+
+  <script>
+    const chatButton = document.getElementById("chatButton");
+    const chatBox = document.getElementById("chatBox");
+    const chatMessages = document.getElementById("chatMessages");
+    const apiUrl = "https://script.google.com/macros/s/AKfycbxVUiEoxWlSx4xuIEzV3LTLXwwPfqVIl8eYpq4EMzVb9KkotFHoQcJmeLxsvEw_Kpgb/exec";
+
+    // فتح/غلق الشات
+    chatButton.addEventListener("click", () => {
+      chatBox.style.display = chatBox.style.display === "none" ? "flex" : "none";
+    });
+
+    // إرسال رسالة
+    async function sendMessage() {
+      const input = document.getElementById("userMessage");
+      const userText = input.value.trim();
+      if (!userText) return;
+
+      // عرض رسالة المستخدم
+      chatMessages.innerHTML += `<div><b>أنت:</b> ${userText}</div>`;
+      input.value = "";
+
+      // إرسال للسيرفر
+      try {
+        const res = await fetch(apiUrl, {
+          method: "POST",
+          body: JSON.stringify({ message: userText }),
+          headers: { "Content-Type": "application/json" }
+        });
+        const data = await res.json();
+
+        // عرض رد البوت
+        chatMessages.innerHTML += `<div><b>البوت:</b> ${data.reply || "مافيش رد 😅"}</div>`;
+        chatMessages.scrollTop = chatMessages.scrollHeight;
+      } catch (err) {
+        chatMessages.innerHTML += `<div style="color:red"><b>خطأ:</b> حصلت مشكلة في الاتصال</div>`;
+      }
+    }
+  </script>
+
+</body>
+</html> 
+-->
